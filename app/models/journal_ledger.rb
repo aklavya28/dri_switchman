@@ -1,0 +1,2 @@
+class JournalLedger < ApplicationRecord
+end
