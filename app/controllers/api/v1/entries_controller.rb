@@ -2,7 +2,9 @@ class Api::V1::EntriesController < ApplicationController
   require 'json'
   require 'pagy/extras/jsonapi'
   before_action :account_params, only: [:create]
+  before_action :switch_tenant
   before_action :authenticate_user!
+
   # before_action :permit_vender, only: [:create_ledger]
 
   def create_ledger

@@ -2,6 +2,7 @@ class Api::V1::ExpenseController < ApplicationController
   require 'json'
   require 'pagy/extras/jsonapi'
   include Pagy::Backend
+  before_action :switch_tenant
   before_action :authenticate_user!
   def get_expense_category
 

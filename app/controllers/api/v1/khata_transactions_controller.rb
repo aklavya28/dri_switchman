@@ -1,6 +1,7 @@
 class Api::V1::KhataTransactionsController < ApplicationController
   require 'json'
   require 'pagy/extras/jsonapi'
+  before_action :switch_tenant
   before_action :authenticate_user!
   def index
     items_per_page = 100

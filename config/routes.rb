@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
   }
 
-
+  get '/find-company', to: "company_database#find_comp", as: :find_comp
 
   namespace "api" do
     namespace "v1" do

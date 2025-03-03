@@ -14,14 +14,33 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: password
+  password: Password123
   socket: /var/run/mysqld/mysqld.sock
   variables:
     sql_mode: TRADITIONAL
 
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: proot
+#   password: password
+#   host: localhost
+#   port: 5432
+#   variables:
+#     statement_timeout: 5000
+
 development:
-  <<: *default
-  database: dri_24_02_25
+  primary:
+    <<: *default
+    migrations_paths: db/primary
+    database: company_login
+
+  accounting:
+    <<: *default
+    migrations_paths: db/migrate
+    database: dri_24_02_2532
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

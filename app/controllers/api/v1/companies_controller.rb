@@ -4,6 +4,7 @@ class Api::V1::CompaniesController < ActionController::API
   include Pagy::Frontend
   include Pagy::Backend
 
+  before_action :setcompany
   before_action :authenticate_user!
   before_action :account_params, only: [:create]
   before_action :find_user, only: [:index]
@@ -317,5 +318,10 @@ class Api::V1::CompaniesController < ActionController::API
 
   def find_user
     @user = User.find_by_id(current_user.id)
+  end
+  def setcompany
+    company_name = request.headers["Company-Name"]
+    company = CompanyLogin.find_by(company_name: company_name)
+    TenantService.switch(company)
   end
 end

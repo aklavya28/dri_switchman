@@ -1,4 +1,5 @@
 class Api::V1::PromotersController < ApplicationController
+  before_action :switch_tenant
   before_action :authenticate_user!
   def promoter_as_user
     # return render json: params

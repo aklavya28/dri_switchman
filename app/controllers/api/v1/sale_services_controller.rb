@@ -1,4 +1,5 @@
 class Api::V1::SaleServicesController < ApplicationController
+  before_action :switch_tenant
   before_action :authenticate_user!
   require 'json'
   require 'pagy/extras/jsonapi'
